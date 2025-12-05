@@ -1,0 +1,45 @@
+// https://developers.weixin.qq.com/community/develop/article/doc/000604d707c5b023a049ba7125b413
+// 分别创建屏幕上边框，右边框，下边框，左边框安全距离：
+// safe-area-inset-top，
+// safe-area-inset-right，
+// safe-area-inset-bottom，
+// safe-area-inset-left
+
+// 使用：
+// iOS 11
+// padding-top: constant(safe-area-inset-top);
+// padding-right: constant(safe-area-inset-right);
+// padding-bottom: constant(safe-area-inset-bottom);
+// padding-left: constant(safe-area-inset-left);
+
+// iOS 11.2 beta及其后
+// padding-top: env(safe-area-inset-top);
+// padding-right: env(safe-area-inset-right);
+// padding-bottom: env(safe-area-inset-bottom);
+// padding-left: env(safe-area-inset-left);
+
+// 兼容性写法：
+// padding-top: 10px;
+// padding-top: constant(safe-area-inset-top);
+// padding-top: env(safe-area-inset-top);
+
+// 与calc合用：
+// padding-top: 10px;
+// padding-top: calc(10px + constant(safe-area-inset-top));
+// padding-top: calc(10px + env(safe-area-inset-top));
+
+// 终！使用sass@mixin：
+// @mixin x-padding-bottom($val:0px) {
+// padding-bottom: $val;
+// padding-bottom: calc(#{$val / 2} + constant(safe-area-inset-bottom)); /* no */
+// padding-bottom: calc(#{$val / 2} + env(safe-area-inset-bottom)); /* no */
+// }
+
+// 注意！！！
+// 1、默认值为0px，不是0，原因是calc不支持与0计算。
+// 2、小程序单位为rpx，一般都会转换为rpx，但是calc不支持，所以不允许转换，保持px。
+
+.safeInsetPaddingBottom {
+  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}
