@@ -64,12 +64,17 @@ export default function LoginPage() {
           <View className="relative">
             <Button
               className="
+              login-btn
             flex items-center justify-center gap-1
             w-full py-4 mb-3 rounded-xl
-          bg-transparent border-[1px] border-[#35F6FC]
-                   text-white text-base
-                   shadow-[0_0_26rpx_rgba(0,138,138,1)_inset]"
-              hoverClass="none"
+          bg-transparent border-[1px]
+          // border-[#35F6FC]
+          border-[#246970]
+                   text-white text-base"
+              style={{
+                boxShadow:
+                  "inset 0 0 5rpx rgba(179, 235, 255, 0.9), inset 0 0 24rpx 6rpx rgb(29, 97, 108)",
+              }}
               openType="getPhoneNumber"
               onGetPhoneNumber={getPhoneNumber}
             >

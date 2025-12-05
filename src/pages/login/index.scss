@@ -1,3 +1,25 @@
 page {
   --toast-background-color: #434343;
 }
+
+.xmybtn {
+  /* 核心渐变：从中心（at 50% 50%）向外扩散，颜色从青色到透明 */
+  background: radial-gradient(
+    circle at 9% 50%,
+    rgba(0, 175, 175, 1) 0%,
+    /* 核心亮青色 */ rgba(29, 96, 105, 0.5) 50%,
+    /* 扩散到深青色 */ transparent 70% /* 最终渐变到透明 */
+  );
+
+  /* 柔化光晕 */
+  filter: blur(15px);
+}
+
+.mybtn {
+  box-shadow:
+    /* 1. 最外层：青色，扩散范围最大 (约 10px 模糊)，透明度较低 */
+    /* A. 外部柔和辉光（模拟原图边缘的柔光效果）*/
+    inset 0 0 5rpx rgba(179, 235, 255, 0.9),
+    // inset 0 0 24rpx 4rpx rgb(34, 107, 119);
+    inset 0 0 24rpx 6rpx rgb(29, 97, 108);
+}
